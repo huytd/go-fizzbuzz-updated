@@ -105,15 +105,103 @@ func TestGitHubDDoSFeature(t *testing.T) {
 }
 ```
 
+A test case should have 2 values:
+
+- Input Value
+- Expected Value
+
+We will execute the test target (the program) with Input value, compare the result with the Expected value to determine if it will be failed or not. For example:
+
+```go
+func TestEvenNumber(t *testing.T) {
+	input  := 2
+	expect := true
+	result := (input % 2 == 0)
+	if result != expect {
+		t.Fail()
+	}
+}
+```
+
 Check the [Go Docs](https://golang.org/pkg/testing/#pkg-index) for more about `testing` package.
 
 Next, we will discuss how to organizing test cases in each test suite.
 
-#### The basic: Case by Case
-<TBD>
+#### Case by Case Test
 
-#### Community recommended: Table Driven Test
-<TBD>
+In this style of organization, each test case will test only one pair of **Input** and **Expected** value. If you have many value pairs, you have to write many test cases.
+
+![](images/casebycase.png)
+
+For example:
+
+```go
+func TestIfNumber2IsEven(t *testing.T) {
+	input  := 2
+	expect := true
+}
+
+func TestIfNumber3IsEven(t *testing.T) {
+	input  := 3
+	expect := false
+}
+
+func TestIfNumber4IsEven(t *testing.T) {
+	input  := 4
+	expect := true
+}
+
+...
+
+func TestIfNumber99IsEven(t *testing.T) {
+	input  := 99
+	expect := false
+}
+```
+
+#### Table Driven Test
+
+Instead of writing 99 test cases for 99 value pairs only to test **one function**, you can combine them in to a table like this:
+
+| input | expected |
+|-------|----------|
+| 1     | false    |
+| 2     | true     |
+| 3     | false    |
+| ...   |          |
+| 99    | false    |
+
+And pass this table to only **one test function**. The goal is to test more value but writing less test function.
+
+![](images/tabledriven.png)
+
+We will define a new `struct` to represent this input table, and use a `for loop` to call the test target with each input.
+
+For example:
+
+```go
+func TestEvenNumber(t *testing.T) {
+	var testCases = []struct {
+		input  int
+		expect bool
+	} {
+		{ 1, false },
+		{ 2, true },
+		{ 3, false },
+		{ 4, true },
+		...
+		{ 99, false },
+	}
+	for _, test := range testCases {
+		result := (test.input % 2 == 0)
+		if result != test.expect {
+			t.Error("Test failed at input: ", test.input)
+		}
+	}
+}
+```
+
+You may want to know which input fail the test, so you should use `t.Error`.
 
 ## TDD or not TDD?
 <TBD>
