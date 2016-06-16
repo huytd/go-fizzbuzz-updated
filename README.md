@@ -204,22 +204,27 @@ func TestEvenNumber(t *testing.T) {
 You may want to know which input fail the test, so you should use `t.Error`.
 
 ## TDD or not TDD?
+At first, we need to agree that TDD - Test Driven Development - is fun, and very useful, but it will slow us down in the beginning (most of the time).
+
+![](images/tdd.png)
+
+Doing TDD mean: Instead of sit down and start bleeding your code on your keyboard, you have to loose some hairs to think about the code you gonna write, how to write it in a testable way, what is the potential test cases you need to cover. Then write the tests, run it, everything will be **red** (fail), then implement it, make it **green** (pass), one by one, then **refactor** it, and repeat the process until everything is green.
+
+#### Write test first, the code can wait (TDD)
 <TBD>
 
-#### Write test first, the code can wait
-<TBD>
+#### Write code first, test it later (not TDD)
 
-#### Write code first, test it later
-<TBD>
+The problem here is you will find yourself try to make your test satisfy the target function, which is, not good for unit testing.
 
 #### Changes are OK, and you can handle it
 <TBD>
 
 ## How much coverage is enough?
 
-This is an hard question, and the answer is depending on who you are, what you are working on, or even the language you are using (keep calm and read on)...
+This is a hard question, and the answer is depending on who you are, what you are working on, or even the language you are using (keep calm and read on)...
 
-In this example, we're working on a function called `FizzBuzz()`, so we just test this function, the example code to use it in `main()` are not necessary to be tested, that's why we only get 81.8% coverage.
+In this example, we're working on a function called `FizzBuzz()`, so we test the logic of this function, but the demo code to use it in `main()` is not necessary to be tested, that's why we only get 81.8% coverage.
 
 There are some good articles to read about code coverage:
 
