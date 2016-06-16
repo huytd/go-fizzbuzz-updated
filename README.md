@@ -15,13 +15,13 @@ We will implement it as `FizzBuzz()` function in `main.go` and test it in `main_
 
 Go has a bunch of awesome built-in features, one of them is `go test`.
 
-### Write the tests
+#### Write the tests
 To write test for your code:
 
 - Create a new `*_test.go` file, where `*` is the source file you want to test. In this example, it will be `main_test.go`.
 - Write the test function with the name of `Test*(t *testing.T) { }`, where `*` is whatever meaningful describe you want.
 
-### Run the tests
+#### Run the tests
 To test them, open Terminal and run:
 
 ```bash
@@ -30,7 +30,7 @@ $ go test
 
 If you are using editors like `vim`, install `vim-go` plugin, then type: `:GoTest`. For `Sublime`, install the [official build system integration](https://github.com/golang/sublime-build), then run `Test` command in the `Command Pallete`.
 
-### Code Coverage
+#### Code Coverage
 It's not a must, but it's recommeneded to run coverage to see how many percent of your code are not being tested yet.
 
 To run coverage, open Terminal and run:
@@ -63,12 +63,34 @@ $ go tool cover -html=cover.out
 
 If you are new to unit test, reading the coverage report also let you know what need to test in your code.
 
-## TDD approach - Write test first, the code can wait
+## How to write test in Go?
+<TBD>
 
-## Write code first, test it later
+#### The basic: Case by Case
+<TBD>
 
-## Changes are OK, and you can handle it
+#### Community recommended: Table Driven Test
+<TBD>
 
-## Table Driven Test
+## TDD or not TDD?
+<TBD>
+
+#### Write test first, the code can wait
+<TBD>
+
+#### Write code first, test it later
+<TBD>
+
+#### Changes are OK, and you can handle it
+<TBD>
 
 ## How much coverage is enough?
+
+This is an hard question, and the answer is depending on who you are, what you are working on, or even the language you are using (keep calm and read on)...
+
+In this example, we're working on a function called `FizzBuzz()`, so we just test this function, the example code to use it in `main()` are not necessary to be tested, that's why we only get 81.8% coverage.
+
+There are some good articles to read about code coverage:
+
+- [Code coverage goal: 80% and no less!](http://googletesting.blogspot.com/2010/07/code-coverage-goal-80-and-no-less.html)
+- [Measuring Coverage at Google](http://googletesting.blogspot.com/2014/07/measuring-coverage-at-google.html)
