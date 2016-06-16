@@ -24,7 +24,7 @@ To write test for your code:
 ### Run the tests
 To test them, open Terminal and run:
 
-```
+```bash
 $ go test
 ```
 
@@ -35,7 +35,7 @@ It's not a must, but it's recommeneded to run coverage to see how many percent o
 
 To run coverage, open Terminal and run:
 
-```
+```bash
 $ go test -cover
 ```
 
@@ -51,13 +51,13 @@ This output mean: the project is 81.8% coverage.
 
 If this is not enough, Go also provide you a deeper look into your code, so you can see what lines of code are not tested. To do it, you need to tell Go to generate some output when it run coverage:
 
-```
+```bash
 $ go test -coverprofile=cover.out
 ```
 
 Then you can use the `cover` tool to read this output in HTML format:
 
-```
+```bash
 $ go tool cover -html=cover.out
 ```
 
