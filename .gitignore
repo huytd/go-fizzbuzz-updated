@@ -23,5 +23,7 @@ _testmain.go
 *.test
 *.prof
 
+.DS_Store
+
 # Coverage file
 cover.out

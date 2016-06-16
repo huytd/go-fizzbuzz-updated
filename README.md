@@ -11,7 +11,7 @@
 
 We will implement it as `FizzBuzz()` function in `main.go` and test it in `main_test.go()`
 
-## Unit testing - Meet the tools
+## Unit testing in Go
 
 Go has a bunch of awesome built-in features, one of them is `go test`.
 
@@ -28,7 +28,15 @@ To test them, open Terminal and run:
 $ go test
 ```
 
-If you are using editors like `vim`, install `vim-go` plugin, then type: `:GoTest`. For `Sublime`, install the [official build system integration](https://github.com/golang/sublime-build), then run `Test` command in the `Command Pallete`.
+![](images/gotest.png)
+
+If you are using editors like `vim`, install [vim-go](https://github.com/fatih/vim-go) plugin, then type: `:GoTest`. 
+
+![](images/vimgo.png)
+
+For `Sublime`, install the [official build system integration](https://github.com/golang/sublime-build), then run `Test` command in the `Command Pallete`.
+
+![](images/sublimego.png)
 
 #### Code Coverage
 It's not a must, but it's recommeneded to run coverage to see how many percent of your code are not being tested yet.
@@ -61,10 +69,45 @@ Then you can use the `cover` tool to read this output in HTML format:
 $ go tool cover -html=cover.out
 ```
 
-If you are new to unit test, reading the coverage report also let you know what need to test in your code.
+![](images/cover.png)
+
+The green lines is the tested code, red lines is not tested yet.
 
 ## How to write test in Go?
-<TBD>
+
+Each `*_test.go` file will be called a **test suite**, where you put the related **test cases**.
+
+Each **test case** will be a function, its name must begin with `Test...`, it takes the `t` object form `testing` package for some helpful features. Example:
+
+```go
+func TestGitHubDDoSFeature(t *testing.T) {
+	// Write your test code here
+}
+```
+
+In each test function, use `t.Error()` or `t.Fail()` to let Go know when your test failed.
+
+Use `Fail()` when you just want your test fail, and does not print any message:
+
+```go
+func TestGitHubDDoSFeature(t *testing.T) {
+	...
+	t.Fail()
+}
+```
+
+Use `Error()` to fail your test with some blame:
+
+```go
+func TestGitHubDDoSFeature(t *testing.T) {
+	...
+	t.Error("You know nothing, Jon Snow!")
+}
+```
+
+Check the [Go Docs](https://golang.org/pkg/testing/#pkg-index) for more about `testing` package.
+
+Next, we will discuss how to organizing test cases in each test suite.
 
 #### The basic: Case by Case
 <TBD>
