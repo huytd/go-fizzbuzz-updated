@@ -65,7 +65,7 @@ func TestFizzBuzzTableDriven(t *testing.T) {
 		expect := test.out
 
 		if result != expect {
-			t.Error("Test failed at input: ", test.in, "\n  Actual result: ", result, "\n  Expected: ", expect)
+			t.Errorf("Test failed at input: %v \n  Actual result: %v \n  Expected: %v", test.in, result, expect)
 		}
 	}
 }
