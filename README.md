@@ -19,7 +19,7 @@ Go has a bunch of awesome built-in features, one of them is `go test`.
 To write test for your code:
 
 - Create a new `*_test.go` file, where `*` is the source file you want to test. In this example, it will be `main_test.go`.
-- Write the test function with the name of `Test*(t *testing.T) { }`, where `*` is whatever meaningful describe you want.
+- Write the test function with the name of `Test*(t *testing.T) { }`, where `Test*` which `*` is whatever meaningful describe you want.
 
 #### Run the tests
 To test them, open Terminal and run:
